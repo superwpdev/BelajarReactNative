@@ -12,9 +12,9 @@ cd BelajarReactNative
 pastikan adb devices terisi device yang aktif
 
 5. buat branch sendiri : 
-git checkout -b project/kelompok1
-git checkout -b project/kelompok2
-git checkout -b project/kelompok3
-git checkout -b project/kelompok4
+- git checkout -b project/kelompok1
+- git checkout -b project/kelompok2
+- git checkout -b project/kelompok3
+- git checkout -b project/kelompok4
 
 6. rubah readme.md , isikan dengan nama nama kelompoknya
