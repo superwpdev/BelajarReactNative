@@ -11,6 +11,8 @@ import {
   TextInput,
   Text,
   View,
+  Button,
+  Alert, 
 } from 'react-native';
 
 const App = () => {
@@ -33,6 +35,10 @@ const App = () => {
     <Text style={{padding: 10, fontSize: 42}}>
       {text.split(' ').map((word) => word && '🍕').join(' ')}
     </Text>
+    <Button
+        title="Press me"
+        onPress={() => Alert.alert('Simple Button pressed')}
+      />
   </View>
   );
 };
