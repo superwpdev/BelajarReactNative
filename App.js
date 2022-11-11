@@ -17,7 +17,7 @@ import {
 
 const App = () => {
   const [text, setText] = useState('');
-
+  const onPress = () => newText => setText('');
   return (
     <View style={{padding: 10}}>
     <TextInput
@@ -37,7 +37,7 @@ const App = () => {
     </Text>
     <Button
         title="Press me"
-        onPress={() => Alert.alert('Simple Button pressed')}
+        onPress={() => setText('')}
       />
   </View>
   );
