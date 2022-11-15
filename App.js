@@ -18,6 +18,7 @@ import {
 const App = () => {
   const [text, setText] = useState('');
   const onPress = () => newText => setText('');
+  const reverse = text.split('').reverse().join('');
   return (
     <View style={{padding: 10}}>
     <TextInput
@@ -30,11 +31,12 @@ const App = () => {
       style={{marginTop:10, height: 40, backgroundColor: '#f0f0f0'}}
       placeholder="Type here to translate!"
       onChangeText={newText => setText(newText)}
-      defaultValue={text}
+      defaultValue={reverse}
     />
     <Text style={{padding: 10, fontSize: 42}}>
       {text.split(' ').map((word) => word && '🍕').join(' ')}
     </Text>
+    
     <Button
         title="Press me"
         onPress={() => setText('')}
