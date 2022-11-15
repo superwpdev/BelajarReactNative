@@ -1,8 +1,6 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
- * Pembalik kata simple Penting Mari
- * UTS Mobile multimedia - Faisal
  * @format
  * @flow strict-local
  */
