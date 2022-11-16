@@ -27,7 +27,7 @@ export default class App extends Component {
   render() {
     return(
       <View>
-      <Text style={{fontSize:40}}>Program Membalikkan Kata</Text>
+      <Text style={{fontSize:26}}>Program Membalikkan Kata</Text>
         <View style={{padding :  10}}>          
           <Text>Input :</Text>
           <View style={{marginBottom : 10}}>
