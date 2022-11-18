@@ -18,3 +18,12 @@ pastikan adb devices terisi device yang aktif
 - git checkout -b project/kelompok4
 
 6. rubah readme.md , isikan dengan nama nama kelompoknya
+
+kelompok 3
+
+yulian varantino
+rikki wahyu saputra
+syahrul galih
+prio dwi santoso
+frenky firnando
+hendro imam saputro
