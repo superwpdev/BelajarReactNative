@@ -1,54 +1,88 @@
-import React, { Component } from 'react';
-import { View, Button, Text, TextInput} from 'react-native';
+import React from 'react';
+import {
+StyleSheet,
+View,
+Text,
+Linking,
+StyleProp,
+TextStyle,
+ViewStyle,
+} from 'react-native';
+import { Header as HeaderRNE, HeaderProps, Icon } from '@rneui/themed';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-export default class App extends Component {
-  state = {
-    teks : '',
-    submitteks : '',
-  }
+type HeaderComponentProps = {
+title: string;
+view?: string;
+};
 
-  formsChange = (event) => {
-    const { text } = event;
-    let processedData = text;
-    console.log(processedData);
-    this.setState({
-      teks : processedData
-    })
-    console.log("karakter = " + this.state.teks);
-  }
-                
-  submitForms = () => {
-    let data = this.state.teks;
-    this.setState({
-      submitteks : data.split('').reverse('').join('')
-    })
-  }
+type ParamList = {
+Detail: {
+  openDrawer: void;
+};
+};
 
-  render() {
-    return(
-      <View>
-      <Text style={{fontSize:26}}>Program Membalikkan Kata</Text>
-        <View style={{padding :  10}}>          
-          <Text>Input :</Text>
-          <View style={{marginBottom : 10}}>
-            <TextInput
-              style={{ borderColor: 'gray', borderWidth: 1, padding : 5 }}
-              onChangeText={text => this.formsChange({ text })}
-              value={this.state.teks}
-            />
+const Header: React.FunctionComponent<HeaderComponentProps> = (props) => {
+
+const docsNavigate = () => {
+  Linking.openURL(`https://reactnativeelements.com/docs/${props.view}`);
+};
+
+const playgroundNavigate = () => {
+  Linking.openURL(`https://@rneui/themed.js.org/#/${props.view}`);
+};
+
+return (
+  <SafeAreaProvider>
+    <HeaderRNE
+      leftComponent={{
+        icon: 'menu',
+        color: '#fff',
+      }}
+      rightComponent={
+          <View style={styles.headerRight}>
+            <TouchableOpacity onPress={docsNavigate}>
+              <Icon name="description" color="white" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{ marginLeft: 10 }}
+              onPress={playgroundNavigate}
+            >
+              <Icon type="antdesign" name="rocket1" color="white" />
+            </TouchableOpacity>
           </View>
-          <View>
-            <Button title='submit' onPress={()=> this.submitForms()}></Button>
-          </View>
-          
-       </View>
-        <View style={{ padding: 10, marginTop : 20 }}>
-         <Text>Result :</Text>
-          <View style={{ borderColor: 'gray', borderWidth: 1, height : 200, padding : 5 }}>
-           <Text>{this.state.submitteks}</Text>
-         </View>
-       </View>
-      </View>
-        )
-        }
-}
+      }
+      centerComponent={{ text: 'Header', style: styles.heading }}
+    />
+  </SafeAreaProvider>
+);
+};
+
+const styles = StyleSheet.create({
+headerContainer: {
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '#397af8',
+  marginBottom: 20,
+  width: '100%',
+  paddingVertical: 15,
+},
+heading: {
+  color: 'white',
+  fontSize: 22,
+  fontWeight: 'bold',
+},
+headerRight: {
+  display: 'flex',
+  flexDirection: 'row',
+  marginTop: 5,
+},
+subheaderText: {
+  color: 'white',
+  fontSize: 16,
+  fontWeight: 'bold',
+},
+});
+
+export default Header;
