@@ -1,4 +1,4 @@
-# Belajar-React-Native (MASTER)
+# Belajar-React-Native (project-element-ui)
 
 1. clone dengan perintah : 
 git clone https://github.com/superwpdev/BelajarReactNative.git
