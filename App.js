@@ -1,46 +1,54 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, { Component } from 'react';
+import { View, Button, Text, TextInput} from 'react-native';
 
-import React, { useState } from 'react';
-import {
-  TextInput,
-  Text,
-  View,
-  Button,
-  Alert, 
-} from 'react-native';
+export default class App extends Component {
+  state = {
+    teks : '',
+    submitteks : '',
+  }
 
-const App = () => {
-  const [text, setText] = useState('');
-  const onPress = () => newText => setText('');
-  return (
-    <View style={{padding: 10}}>
-    <TextInput
-      style={{height: 40, backgroundColor: '#f0f0f0'}}
-      placeholder="Type here to translate!"
-      onChangeText={newText => setText(newText)}
-      defaultValue={text}
-    />
-    <TextInput
-      style={{marginTop:10, height: 40, backgroundColor: '#f0f0f0'}}
-      placeholder="Type here to translate!"
-      onChangeText={newText => setText(newText)}
-      defaultValue={text}
-    />
-    <Text style={{padding: 10, fontSize: 42}}>
-      {text.split(' ').map((word) => word && '🍕').join(' ')}
-    </Text>
-    <Button
-        title="Press me"
-        onPress={() => setText('')}
-      />
-  </View>
-  );
-};
+  formsChange = (event) => {
+    const { text } = event;
+    let processedData = text;
+    console.log(processedData);
+    this.setState({
+      teks : processedData
+    })
+    console.log("karakter = " + this.state.teks);
+  }
+                
+  submitForms = () => {
+    let data = this.state.teks;
+    this.setState({
+      submitteks : data.split('').reverse('').join('')
+    })
+  }
 
-export default App;
+  render() {
+    return(
+      <View>
+      <Text style={{fontSize:26}}>Program Membalikkan Kata</Text>
+        <View style={{padding :  10}}>          
+          <Text>Input :</Text>
+          <View style={{marginBottom : 10}}>
+            <TextInput
+              style={{ borderColor: 'gray', borderWidth: 1, padding : 5 }}
+              onChangeText={text => this.formsChange({ text })}
+              value={this.state.teks}
+            />
+          </View>
+          <View>
+            <Button title='submit' onPress={()=> this.submitForms()}></Button>
+          </View>
+          
+       </View>
+        <View style={{ padding: 10, marginTop : 20 }}>
+         <Text>Result :</Text>
+          <View style={{ borderColor: 'gray', borderWidth: 1, height : 200, padding : 5 }}>
+           <Text>{this.state.submitteks}</Text>
+         </View>
+       </View>
+      </View>
+        )
+        }
+}
