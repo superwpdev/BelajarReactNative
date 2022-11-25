@@ -13,17 +13,26 @@
    TextInput,
    Text,
    View,
-   Button,
+   //Button,
    Alert,
  } from 'react-native';
- 
+ import { 
+  Button,
+  Header
+ } from '@rneui/themed';
+ import { 
+  SafeAreaProvider  
+ } from 'react-native-safe-area-context';
+ import { 
+  LinearGradient
+ } from 'react-native-linear-gradient';
  
  const App = () => {
    const [text, setText] = useState('');
    const HeaderText = "PEMBALIK KATA";
 
    return (
-     <View style={styles.container}>
+    <View style={styles.container}>
     <Text style={{fontSize: 35, textAlign: 'center',color: '#782f40'}}>
        {HeaderText}
      </Text>
@@ -36,6 +45,7 @@
      <Button
      title="Pencet Untuk Membalik Kata"
      color="#782f40"
+     type='outline'
      onPress={() => Alert.alert(text.split('').reverse('').join(''))} />
    </View>
    );
