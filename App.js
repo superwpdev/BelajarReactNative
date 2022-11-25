@@ -22,13 +22,13 @@ const App = () => {
   return (
     <View style={{padding: 10}}>
     <TextInput
-      style={{height: 40, backgroundColor: '#f0f0f0'}}
+      style={{height: 40, backgroundColor: 'black'}}
       placeholder="Type here to translate!"
       onChangeText={newText => setText(newText)}
       defaultValue={text}
     />
     <TextInput
-      style={{marginTop:10, height: 40, backgroundColor: '#f0f0f0'}}
+      style={{marginTop:10, height: 40, backgroundColor: 'black'}}
       placeholder="Type here to translate!"
       onChangeText={newText => setText(newText)}
       defaultValue={reverse}

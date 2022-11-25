@@ -25,4 +25,4 @@ Nama Kelompok :
 4. Shintya
 5. Beni 
 6. Meli
-7. Lupa
+7. Stella
