@@ -1,57 +1,89 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @format
- * @flow strict-local
- */
+import React from 'react';
+import {
+StyleSheet,
+View,
+Text,
+Linking,
+StyleProp,
+TextStyle,
+ViewStyle,
+} from 'react-native';
+import { Header as HeaderRNE, HeaderProps, Icon } from '@rneui/themed';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
- import React, { useState } from 'react';
- import {
-   StyleSheet,
-   TextInput,
-   Text,
-   View,
-   //Button,
-   Alert,
- } from 'react-native';
- import { 
-  Button,
-  Header
- } from '@rneui/themed';
- import { 
-  SafeAreaProvider  
- } from 'react-native-safe-area-context';
- import { 
-  LinearGradient
- } from 'react-native-linear-gradient';
- 
- const App = () => {
-   const [text, setText] = useState('');
-   const HeaderText = "PEMBALIK KATA";
+type HeaderComponentProps = {
+title: string;
+view?: string;
+};
 
-   return (
-    <View style={styles.container}>
-    <Text style={{fontSize: 35, textAlign: 'center',color: '#782f40'}}>
-       {HeaderText}
-     </Text>
-     <TextInput
-       style={{height: 40, backgroundColor: '#f0f0f0'}}
-       placeholder="Ketik disini Untuk Membalik Kata"
-       onChangeText={newText => setText(newText)}
-       defaultValue={text}
-     />
-     <Button
-     title="Pencet Untuk Membalik Kata"
-     color="#782f40"
-     type='outline'
-     onPress={() => Alert.alert(text.split('').reverse('').join(''))} />
-   </View>
-   );
- };
- const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-  },
+type ParamList = {
+Detail: {
+  openDrawer: void;
+};
+};
+
+const Header: React.FunctionComponent<HeaderComponentProps> = (props) => {
+
+const docsNavigate = () => {
+  Linking.openURL(`https://reactnativeelements.com/docs/${props.view}`);
+};
+
+const playgroundNavigate = () => {
+  Linking.openURL(`https://@rneui/themed.js.org/#/${props.view}`);
+};
+
+
+return (
+  <SafeAreaProvider>
+    <HeaderRNE
+      leftComponent={{
+        icon: 'menu',
+        color: '#fff',
+      }}
+      rightComponent={
+          <View style={styles.headerRight}>
+            <TouchableOpacity onPress={docsNavigate}>
+              <Icon name="description" color="white" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{ marginLeft: 10 }}
+              onPress={playgroundNavigate}
+            >
+              <Icon type="antdesign" name="rocket1" color="white" />
+            </TouchableOpacity>
+          </View>
+      }
+      centerComponent={{ text: 'Header', style: styles.heading }}
+    />
+  </SafeAreaProvider>
+);
+};
+
+const styles = StyleSheet.create({
+headerContainer: {
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '#ddffff',
+  marginBottom: 20,
+  width: '100%',
+  paddingVertical: 15,
+},
+heading: {
+  color: 'white',
+  fontSize: 22,
+  fontWeight: 'bold',
+},
+headerRight: {
+  display: 'flex',
+  flexDirection: 'row',
+  marginTop: 5,
+},
+subheaderText: {
+  color: 'white',
+  fontSize: 16,
+  fontWeight: 'bold',
+},
 });
 
- export default App;
+export default Header;
